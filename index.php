@@ -16,7 +16,8 @@ if (mysqli_num_rows($result) > 0) {
                     <h5 class='card-title'>{$row["title"]}</h5>
                     <p class='card-text'>{$row["author_first_name"]} {$row["author_last_name"]}</p> 
                     <a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
-                    <a href='update.php?id={$row["id"]}' class='btn btn-danger'>Update</a>
+                    <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+                    <a href='index.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>
                 </div>
             </div>
         </div>";
