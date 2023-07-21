@@ -1,32 +1,43 @@
 <?php
 require_once "db_connect.php";
 
-$sql = "SELECT * FROM library";
+$id = $_GET["id"];
 
+$sql = "SELECT * FROM library WHERE id = $id ";
 $result = mysqli_query($connect, $sql);
 
 $cards = "";
 
+
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $cards .= "<div class='col-lg-4 col-md-6 col-sm-12 mb-3'>
-            <div class='card' style='width: 320px;'>
-                <img src='{$row["image"]}' class='card-img-top' alt='...' style='height: 440px; object-fit: cover;'>
+        $cards .= "<div style='min-width: 500px; max-width: 700px;'>
+            <div class='card border-3'>
+                <img src='{$row["image"]}' class='card-img-top' style='width: 200px; height: 250px; object-fit: cover;'>
                 <div class='card-body shadow bg-body-tertiary rounded'>
-                    <h5 class='card-title'>{$row["title"]}</h5>
-                    <p class='card-text'>{$row["author_first_name"]} {$row["author_last_name"]}</p> 
-                    <a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
-                    <a href='create.php?id={$row["id"]}' class='btn btn-danger'>Create</a>
+                    <h4 class='card-title'><strong>{$row["title"]}</strong></h4>
+                    <p class='card-text style'>{$row["type"]}</p>
+                    <hr>
+                    <p class='card-text'> <strong>Book is written by: </strong>{$row["author_first_name"]}</p>
+                    <p class='card-text'> <strong>ISBN Nr: </strong>{$row["ISBN"]}</p>
+                    <p class='card-text'> <strong>Published by: </strong>{$row["publisher_name"]}</p>
+                    <p class='card-text'> <strong>Published on: </strong>{$row["publisher_date"]}</p>
+                    <p class='card-text style'><strong>Description: </strong><br> {$row["short_description"]}</p>
+                    <p class='card-text'>";
+        if ($row["status"] > 0) {
+            $cards .= "<p class='text-success'>Available</p>";
+        } else {
+            $cards .= "<p class='text-danger'>Reserved</p>";
+        }
+        $cards .= "</p>
                 </div>
             </div>
         </div>";
     }
 } else {
-    $cards = "<p>No results found</p>";
+    $cards .= "<p>No Content</p>";
 }
 
-
-mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -61,17 +72,12 @@ mysqli_close($connect);
     </nav>
 
 
-
     <div class="container mt-5">
-        <a class="btn btn-secondary" href="create.php">Create a new titel</a>
-        <div class="d-flex justify-content-center"> <!-- Use d-flex and justify-content-center to center the heading -->
-            <h1 class="mt-5 mb-3 text-success-emphasis bg-info-subtle shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 250px; padding-left:5px; padding-bottom:5px;">Library List</h1>
-        </div>
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
+
+        <div class="d-flex justify-content-center">
             <?= $cards ?>
         </div>
     </div>
-
 
 
 
