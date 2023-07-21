@@ -6,7 +6,7 @@ if (isset($_POST["create"])) {
     $author = $_POST["author_first_name"];
     $image = $_POST["image"];
 
-    $sql = "INSERT INTO library (title, author, image) VALUES ('$title', $author, '$image')";
+    $sql = "INSERT INTO library (title, author_first_name, image) VALUES ('$title', '$author', '$image')";
 
     if (mysqli_query($connect, $sql)) {
         echo "Success";
@@ -28,9 +28,9 @@ if (isset($_POST["create"])) {
 
 <body>
     <form method="post">
-        <input type="text" name="name">
-        <input type="number" name="price">
-        <input type="text" name="picture">
+        <input type="text" name="title">
+        <input type="text" name="author_first_name">
+        <input type="text" name="image">
         <input type="submit" name="create">
     </form>
 </body>
