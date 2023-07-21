@@ -11,7 +11,7 @@ $row = mysqli_fetch_assoc($result);
 
 if (isset($_POST["update"])) {
     $title = $_POST["title"];
-    $author = $_POST["author_first_name"];
+    $author = $_POST["author"];
     $image = $_POST["image"];
 
     $sql = "UPDATE `library` SET `title`='$title',`author_first_name`='$author',`image`='$image' WHERE id = $id";
@@ -37,7 +37,7 @@ if (isset($_POST["update"])) {
 <body>
     <form method="post">
         <input type="text" name="title" value="<?= $row["title"] ?>">
-        <input type="text" name="author_first_name" value="<?= $row["author"] ?>">
+        <input type="text" name="author" value="<?= $row["author_first_name"] ?>">
         <input type="text" name="image" value="<?= $row["image"] ?>">
         <input type="submit" name="update">
     </form>
