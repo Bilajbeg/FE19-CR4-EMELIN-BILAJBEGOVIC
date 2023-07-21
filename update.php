@@ -11,7 +11,7 @@ $row = mysqli_fetch_assoc($result);
 
 if (isset($_POST["update"])) {
     $title = $_POST["title"];
-    $pauthor = $_POST["author_first_name"];
+    $author = $_POST["author_first_name"];
     $picimage = $_POST["image"];
 
     $sql = "UPDATE `library` SET `title`='$title',`author_first_name`='$author',`image`='$image' WHERE id = $id";
