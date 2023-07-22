@@ -13,14 +13,14 @@ if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $cards .= "<div style='min-width: 500px; max-width: 700px;'>
             <div class='card border-3'>
-                <img src='{$row["image"]}' class='card-img-top' style='width: 200px; height: 250px; object-fit: cover;'>
+                <img src='{$row["image"]}' class='card-img-top mx-3 mt-2' style='width: 200px; height: 250px; object-fit: cover;'>
                 <div class='card-body shadow bg-body-tertiary rounded'>
                     <h4 class='card-title'><strong>{$row["title"]}</strong></h4>
                     <p class='card-text style'>Type: {$row["type"]}</p>
                     <hr>
                     <p class='card-text'> <strong>Book is written by: </strong>{$row["author_first_name"]}</p>
                     <p class='card-text'> <strong>ISBN Nr: </strong>{$row["ISBN"]}</p>
-                    Publisher: <a href='publisher.php?publisher_name={$row["publisher_name"]}'>{$row["publisher_name"]}</a>
+                    <p class='card-text'> <strong>Publisher:</strong> <a href='publisher.php?publisher_name={$row["publisher_name"]}'>{$row["publisher_name"]}</a></p>
                     <p class='card-text'> <strong>Published on: </strong>{$row["publisher_date"]}</p>
                     <p class='card-text style'><strong>Description: </strong><br> {$row["short_description"]}</p>
                     <p class='card-text'>";
@@ -30,7 +30,9 @@ if (mysqli_num_rows($result) > 0) {
             $cards .= "<p class='text-danger'>Reserved</p>";
         }
         $cards .= "</p>
-        <a href='index.php' class='btn btn-success my-2' style='width: auto;'>HOME PAGE</a>
+        <a href='index.php' class='btn btn-primary my-2' style='width: auto;'>HOME PAGE</a>
+        <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
+        <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>
                 </div>
             </div>
         </div>";

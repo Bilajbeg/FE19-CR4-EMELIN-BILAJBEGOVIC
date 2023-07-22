@@ -127,12 +127,12 @@ if (isset($_POST["update"])) {
                     </div>
                     <div class="mb-3">
                         <label for="short_description" class="form-label">Short Description</label>
-                        <textarea class="form-control" id="short_description" name="short_description" rows="6" value="<?= $row["short_description"] ?>"></textarea>
+                        <textarea class="form-control" id="short_description" name="short_description" rows="6"><?= $row["short_description"] ?></textarea>
                     </div>
 
 
-                    <button type="submit" name="update" class="btn btn-primary btn-lg">Update</button>
-                    <a href='index.php' class='btn btn-success btn-lg' style='width: auto;'>HOME PAGE</a>
+                    <button type="submit" name="update" class="btn btn-success btn-lg">Update</button>
+                    <a href='index.php' class='btn btn-primary btn-lg' style='width: auto;'>HOME PAGE</a>
                 </form>
             </div>
         </div>
