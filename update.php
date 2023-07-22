@@ -57,8 +57,15 @@ if (isset($_POST["update"])) {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 20px;">Home</a>
                     </li>
+                    <!-- Add more menu items below -->
                     <li class="nav-item">
-                        <a class="nav-link" href="create.php" style="font-size: 20px;">Create title</a>
+                        <a class="nav-link" href="https://codefactory.wien/en/contact-en/" style="font-size: 20px;" target="_blank">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://codefactory.wien/en/team-en/" style="font-size: 20px;" target="_blank">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://codefactory.wien/en/home-en/" style="font-size: 20px;" target="_blank">Impressium</a>
                     </li>
                 </ul>
             </div>
@@ -125,12 +132,13 @@ if (isset($_POST["update"])) {
 
 
                     <button type="submit" name="update" class="btn btn-primary btn-lg">Update</button>
+                    <a href='index.php' class='btn btn-success btn-lg' style='width: auto;'>HOME PAGE</a>
                 </form>
             </div>
         </div>
     </div>
 
-    <footer class="navbar navbar-expand-lg bg-body-tertiary">
+    <footer class="navbar navbar-expand-lg bg-body-tertiary fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
             <div class="text-center p-3" style="font-size: 18px;">
                 <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>

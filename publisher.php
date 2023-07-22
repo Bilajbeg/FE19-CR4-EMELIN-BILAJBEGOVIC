@@ -21,13 +21,24 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 20px;">Home</a>
                     </li>
+                    <!-- Add more menu items below -->
                     <li class="nav-item">
-                        <a class="nav-link" href="create.php" style="font-size: 20px;">Create title</a>
+                        <a class="nav-link" href="https://codefactory.wien/en/contact-en/" style="font-size: 20px;" target="_blank">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://codefactory.wien/en/team-en/" style="font-size: 20px;" target="_blank">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://codefactory.wien/en/home-en/" style="font-size: 20px;" target="_blank">Impressium</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="d-flex justify-content-center"> <!-- Use d-flex and justify-content-center to center the heading -->
+        <h1 class="mt-5 mb-3 text-success-emphasis bg-info-subtle shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 300px; padding-left:5px; padding-bottom:5px; text-shadow: 3px 3px 3px gray;">Publisher List</h1>
+    </div>
 
     <?php
 
@@ -86,7 +97,7 @@
 
     ?>
 
-    <footer class="navbar navbar-expand-lg bg-body-tertiary">
+    <footer class="navbar navbar-expand-lg bg-body-tertiary fixed-bottom">
         <div class="container-fluid d-flex justify-content-center">
             <div class="text-center p-3" style="font-size: 18px;">
                 <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>
