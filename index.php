@@ -41,7 +41,7 @@ mysqli_close($connect);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-<body class="bg-success text-dark bg-opacity-50">
+<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">

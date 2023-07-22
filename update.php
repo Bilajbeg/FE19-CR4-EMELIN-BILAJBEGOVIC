@@ -22,7 +22,7 @@ if (isset($_POST["update"])) {
 
 
 
-    $sql = "UPDATE INTO library (title, image, ISBN, short_description, type, author_first_name, author_last_name, publisher_name, publisher_adress, publisher_date, status) VALUES ('$title', '$image', '$ISBN', '$short_description', '$type', '$author','$author_1',   '$publisher_name', '$publisher_adress', '$publisher_date', '$status')";
+    $sql = "UPDATE library SET title='$title', image='$image', ISBN='$ISBN', short_description='$short_description', type='$type', author_first_name='$author', author_last_name='$author_1', publisher_name='$publisher_name', publisher_adress='$publisher_adress', publisher_date='$publisher_date', status='$status' WHERE id=$id";
 
     if (mysqli_query($connect, $sql)) {
         echo "Success";
@@ -44,7 +44,7 @@ if (isset($_POST["update"])) {
     <title>Create</title>
 </head>
 
-<body class="bg-success text-dark bg-opacity-50">
+<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">

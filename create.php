@@ -37,7 +37,7 @@ if (isset($_POST["create"])) {
     <title>Create</title>
 </head>
 
-<body class="bg-success text-dark bg-opacity-50">
+<body class="bg-success text-dark bg-opacity-50" style="height: 200vh">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
