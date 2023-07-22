@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
                     <h4 class='card-title'><strong>{$row["title"]}</strong></h4>
                     <p class='card-text style'>Type: {$row["type"]}</p>
                     <hr>
-                    <p class='card-text'> <strong>Book is written by: </strong>{$row["author_first_name"]}</p>
+                    <p class='card-text'> <strong>Book is written by: </strong>{$row["author_first_name"]} {$row["author_last_name"]}</p>
                     <p class='card-text'> <strong>ISBN Nr: </strong>{$row["ISBN"]}</p>
                     <p class='card-text'> <strong>Publisher:</strong> <a href='publisher.php?publisher_name={$row["publisher_name"]}'>{$row["publisher_name"]}</a></p>
                     <p class='card-text'> <strong>Published on: </strong>{$row["publisher_date"]}</p>
