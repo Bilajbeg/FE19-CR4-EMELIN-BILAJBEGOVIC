@@ -20,7 +20,8 @@ if (mysqli_num_rows($result) > 0) {
                     <hr>
                     <p class='card-text'> <strong>Book is written by: </strong>{$row["author_first_name"]}</p>
                     <p class='card-text'> <strong>ISBN Nr: </strong>{$row["ISBN"]}</p>
-                    <p class='card-text'> <strong>Published by: </strong>{$row["publisher_name"]}</p>
+                    <p class='card-text'><strong>Published by: </strong>
+                     <a href='publisher.php?publisher_name=<?= urlencode($row["publisher_name"]) ?>'><?= $row["publisher_name"] ?></a></p>
                     <p class='card-text'> <strong>Published on: </strong>{$row["publisher_date"]}</p>
                     <p class='card-text style'><strong>Description: </strong><br> {$row["short_description"]}</p>
                     <p class='card-text'>";
