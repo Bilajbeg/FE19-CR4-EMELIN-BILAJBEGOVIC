@@ -1,27 +1,3 @@
-<?php
-require_once "db_connect.php";
-
-if (isset($_GET["id"])) {
-    $publisher_name = $_GET["id"];
-
-    // Note: Consider using prepared statements to prevent SQL injection
-    $sql = "SELECT * FROM library WHERE publisher_name = '$publisher_name'";
-    $result = mysqli_query($connect, $sql);
-
-    // Display media published by the specific publisher
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            // Display the media details here (similar to index.php)
-        }
-    } else {
-        echo "<p>No media found for this publisher.</p>";
-    }
-
-    mysqli_close($connect);
-} else {
-    echo "<p>No publisher name specified.</p>";
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +9,7 @@ if (isset($_GET["id"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-success text-dark bg-opacity-50">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
@@ -53,47 +29,61 @@ if (isset($_GET["id"])) {
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <!-- Add a heading to indicate the publisher -->
-        <h1 class="text-center mb-5"><?= $_GET["id"] ?> Books</h1>
+    <?php
 
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
-            <?php
-            require_once "db_connect.php";
+    require_once "db_connect.php";
 
-            if (isset($_GET["id"])) {
-                $publisher_name = $_GET["id"];
+    if (isset($_GET['publisher_name'])) {
+        $publisher_name = $_GET['publisher_name'];
 
-                $sql = "SELECT * FROM library WHERE publisher_name = '$publisher_name'";
-                $result = mysqli_query($connect, $sql);
+        $sql = "SELECT * FROM `library` WHERE `publisher_name` = '$publisher_name'";
+        $result = mysqli_query($connect, $sql);
 
-                if (mysqli_num_rows($result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        // Display book details in a card
-                        echo "<div class='col-lg-4 col-md-6 col-sm-12 mb-3'>
-                                <div class='card' style='width: 18rem;'>
-                                    <img src='{$row["image"]}' class='card-img-top' alt='...' style='height: 340px; object-fit: cover;'>
-                                    <div class='card-body'>
-                                        <h5 class='card-title'>{$row["title"]}</h5>
-                                        <p class='card-text'>{$row["author_first_name"]}</p>
-                                        <p class='card-text'>{$row["author_last_name"]}</p>
-                                        <a href='update.php?id={$row["id"]}' class='btn btn-warning'>Update</a>
-                                        <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>
-                                    </div>
-                                </div>
-                            </div>";
-                    }
-                } else {
-                    echo "<p>No media found for this publisher.</p>";
-                }
+        if (mysqli_num_rows($result) > 0) {
+            echo "
+      <div class='container d-flex justify-content-center'>
+      <div class='row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-xs-1'>";
 
-                mysqli_close($connect);
-            } else {
-                echo "<p>No publisher name specified.</p>";
-            }
-            ?>
+            while ($row = mysqli_fetch_assoc($result)) {
+                $title = $row['title'];
+                $image = $row['image'];
+                $short_description = $row['short_description'];
+                $author_firstname = $row['author_first_name'];
+                $author_lastname = $row['author_last_name'];
+                $publisher_name = $row['publisher_name'];
+                $publisher_address = $row['publisher_adress'];
+                $publish_date = $row['publisher_date'];
+
+                echo "
+        <div class='card my-2 mx-2' style='width: 18rem;'>
+        <img src='{$row["image"]}' class='card-img-top my-2' alt='...'>
+        <div class='card-body'>
+          <h5 class='card-title'>{$row["title"]}</h5>
+          <p class='card-text'>{$row["short_description"]}</p>
         </div>
-    </div>
+        <a href='details.php?id={$row["id"]}' class='btn btn-warning' style='width: auto;'>Show details</a>
+        <a href='delete.php?id={$row["id"]}' class='btn btn-danger my-2' style='width: auto;'>Delete</a>
+        <a href='update.php?id={$row["id"]}' class='btn btn-primary' style='width: auto;'>Update</a>
+        <a href='index.php' class='btn btn-success my-2' style='width: auto;'>Go Back</a>
+               <ul class='list-group list-group-flush'>
+          <li class='list-group-item'>ISBN: {$row["ISBN"]}</li>
+          <li class='list-group-item'>
+        Publisher: {$row["publisher_name"]}
+        </li>
+        </ul>
+        </div>";
+            }
+            echo "
+      </div>
+      </div>";
+        } else {
+            echo 'Publisher have no Entries.';
+        }
+    } else {
+        echo 'Invalid request.';
+    };
+
+    ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
