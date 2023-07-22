@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,8 @@
 </head>
 
 <body class="bg-success text-dark bg-opacity-50">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,10 +19,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 20px;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create title</a>
+                        <a class="nav-link" href="create.php" style="font-size: 20px;">Create title</a>
                     </li>
                 </ul>
             </div>
@@ -56,20 +56,21 @@
 
                 echo "
         <div class='card my-2 mx-2' style='width: 18rem;'>
-        <img src='{$row["image"]}' class='card-img-top my-2' alt='...'>
+        <img src='{$row["image"]}' class='card-img-top my-2' alt='...' style='width: 200px; height: 250px; object-fit: cover;'>
         <div class='card-body'>
           <h5 class='card-title'>{$row["title"]}</h5>
+          <hr>
+          <li class='list-group-item'>ISBN: {$row["ISBN"]}</li>
+          <hr>
           <p class='card-text'>{$row["short_description"]}</p>
         </div>
-        <a href='details.php?id={$row["id"]}' class='btn btn-warning' style='width: auto;'>Show details</a>
+        <a href='details.php?id={$row["id"]}' class='btn btn-secondary' style='width: auto;'>Details</a>
+        <a href='update.php?id={$row["id"]}' class='btn btn-primary my-2' style='width: auto;'>Update</a>
         <a href='delete.php?id={$row["id"]}' class='btn btn-danger my-2' style='width: auto;'>Delete</a>
-        <a href='update.php?id={$row["id"]}' class='btn btn-primary' style='width: auto;'>Update</a>
-        <a href='index.php' class='btn btn-success my-2' style='width: auto;'>Go Back</a>
+        <a href='index.php' class='btn btn-success my-2' style='width: auto;'>HOME PAGE</a>
                <ul class='list-group list-group-flush'>
-          <li class='list-group-item'>ISBN: {$row["ISBN"]}</li>
-          <li class='list-group-item'>
-        Publisher: {$row["publisher_name"]}
-        </li>
+          <li class='list-group-item'>Published on: {$row["publisher_date"]}</li>
+          <li class='list-group-item'>Publisher: {$row["publisher_name"]}</li>
         </ul>
         </div>";
             }
@@ -84,6 +85,14 @@
     };
 
     ?>
+
+    <footer class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="text-center p-3" style="font-size: 18px;">
+                <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

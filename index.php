@@ -14,7 +14,8 @@ if (mysqli_num_rows($result) > 0) {
                 <img src='{$row["image"]}' class='card-img-top' alt='...' style='height: 440px; object-fit: cover;'>
                 <div class='card-body shadow bg-body-tertiary rounded'>
                     <h5 class='card-title'>{$row["title"]}</h5>
-                    <p class='card-text'>{$row["author_first_name"]} {$row["author_last_name"]}</p> 
+                    Publisher: <a href='publisher.php?publisher_name={$row["publisher_name"]}'>{$row["publisher_name"]}</a>
+                    <p class='card-text'>Author: {$row["author_first_name"]} {$row["author_last_name"]}</p> 
                     <a href='details.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
                     <a href='update.php?id={$row["id"]}' class='btn btn-success'>Edit</a>
                     <a href='delete.php?id={$row["id"]}' class='btn btn-danger'>Delete</a>
@@ -41,7 +42,8 @@ mysqli_close($connect);
 </head>
 
 <body class="bg-success text-dark bg-opacity-50">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,21 +52,18 @@ mysqli_close($connect);
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.php" style="font-size: 20px;">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create title</a>
+                        <a class="nav-link" href="create.php" style="font-size: 20px;">Create title</a>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
 
-
-
-    <div class="container mt-5">
-        <a class="btn btn-secondary" href="create.php">Create a new titel</a>
+    <div class="container">
+        <a class="btn btn-secondary btn-lg" href="create.php">Create a new titel</a>
         <div class="d-flex justify-content-center"> <!-- Use d-flex and justify-content-center to center the heading -->
             <h1 class="mt-5 mb-3 text-success-emphasis bg-info-subtle shadow p-3 mb-5 bg-body-tertiary rounded" style="max-width: 250px; padding-left:5px; padding-bottom:5px;">Library List</h1>
         </div>
@@ -72,6 +71,15 @@ mysqli_close($connect);
             <?= $cards ?>
         </div>
     </div>
+
+
+    <footer class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="text-center p-3" style="font-size: 18px;">
+                <strong>© 2023 Copyright: Emelin Bilajbegovic</strong>
+            </div>
+        </div>
+    </footer>
 
 
 
