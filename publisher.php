@@ -67,7 +67,7 @@
 
                 echo "
         <div class='card my-2 mx-5' style='width: 20rem;'>
-        <img src='{$row["image"]}' class='card-img-top mt-3 mx-3' alt='...' style='width: 200px; height: 250px; object-fit: cover;'>
+        <img src='{$row["image"]}' class='card-img-top p-2 pt-3' alt='...' style='width: 220px; height: 300px; object-fit: cover;'>
         <div class='card-body'>
           <h5 class='card-title'>{$row["title"]}</h5>
           <hr>
