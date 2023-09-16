@@ -11,7 +11,7 @@ if (isset($_POST["update"])) {
     $title = $_POST["title"];
     $image = $_POST["image"];
     $ISBN = $_POST["ISBN"];
-    $short_description = $_POST["short_description"];
+    $short_description = str_replace("'", "&#39;", $_POST["short_description"]);
     $type = $_POST["type"];
     $author = $_POST["author_first_name"];
     $author_1 = $_POST["author_last_name"];
